@@ -55,10 +55,10 @@ const resolvers = {
 const pubsub = new PubSub();
 const server = new GraphQLServer({ typeDefs, resolvers, context: { pubsub } });
 if (process.env.NODE_ENV === "development ") {
-	console.log("this is dev mode");
+	console.log("this is dev mode",server.options);
 	server.options.port = 4001;
 } else {
-	server.options.port = 4000;
+	server.options.port = process.env.PORT;
 }
 
 server.start(({ port }) => {

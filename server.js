@@ -45,6 +45,7 @@ const resolvers = {
 		messages: {
 			subscribe: (parent, args, { pubsub }) => {
 				const channel = Math.random().toString(36).slice(2, 15);
+				console.log(channel);
 				onMessageUpdates(() => pubsub.publish(channel, { messages }));
 				setTimeout(() => pubsub.publish(channel, { messages }), 0);
 				return pubsub.asyncIterator(channel);
@@ -54,12 +55,8 @@ const resolvers = {
 };
 const pubsub = new PubSub();
 const server = new GraphQLServer({ typeDefs, resolvers, context: { pubsub } });
-if (process.env.NODE_ENV === "development ") {
-	console.log("this is dev mode",server.options);
-	server.options.port = 4001;
-} else {
-	server.options.port = process.env.PORT;
-}
+
+server.options.port = process.env.PORT || 4000;
 
 server.start(({ port }) => {
 	console.log(`Server on http://localhost:${port}/`);

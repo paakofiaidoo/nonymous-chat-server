@@ -58,9 +58,12 @@ if (process.env.NODE_ENV === "development ") {
 	console.log("this is dev mode");
 	server.options.port = 4001;
 } else {
-	server.options.port = 3000;
+	server.options.port = 4000;
 }
 
 server.start(({ port }) => {
 	console.log(`Server on http://localhost:${port}/`);
 });
+server.listen({ port: server.options.port || 4000 }).then(({ url }) => {
+	console.log(`🚀 Server ready at ${url}`);
+  });

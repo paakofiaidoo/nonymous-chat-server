@@ -1,0 +1,14 @@
+{
+	"name": "server",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"start": "SET NODE_ENV=production && node server.js",
+		"dev": "SET NODE_ENV=development && nodemon server.js"
+	},
+	"dependencies": {
+		"graphql-yoga": "^1.18.3",
+		"uuid": "^8.3.1"
+	}
+}

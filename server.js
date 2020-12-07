@@ -57,6 +57,8 @@ const server = new GraphQLServer({ typeDefs, resolvers, context: { pubsub } });
 if (process.env.NODE_ENV === "development ") {
 	console.log("this is dev mode");
 	server.options.port = 4001;
+} else {
+	server.options.port = 3000;
 }
 
 server.start(({ port }) => {

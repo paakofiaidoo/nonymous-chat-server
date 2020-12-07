@@ -64,6 +64,3 @@ if (process.env.NODE_ENV === "development ") {
 server.start(({ port }) => {
 	console.log(`Server on http://localhost:${port}/`);
 });
-server.listen({ port: server.options.port || 4000 }).then(({ url }) => {
-	console.log(`🚀 Server ready at ${url}`);
-  });
